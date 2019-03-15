@@ -16,8 +16,7 @@ class polish_calc{
     polish_calc() = default;
 
 private:
-    std::stack<element> opstack;
-
+    std::stack<element> _opstack;  // operation stack
 
 };
 
