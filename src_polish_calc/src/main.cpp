@@ -15,10 +15,10 @@ int main(){
     // cout << "num: " << num.is_op() << " " << num << endl;
 
 
-    string expr = "5.0 4.0 +  9  *1 - 80.000 / 3 + r 10 ^";
+    string expr = "5.0 4.0 +  9  *1 - 80.000 / 3 + r 10 ^ 2 *";
     polish_calc calc;
 
-    // should print 1024
+    // should print 2048
     cout << expr << " => " << calc.eval_string(expr) << endl;
 
     return 0;
