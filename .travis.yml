@@ -1,22 +1,20 @@
-language: cpp
 dist: trusty
+language: cpp
 
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-before_install:
-    - eval "${MATRIX_EVAL}"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
 
 script:
+  - export CC=gcc-7
+  - export CXX=g++-7
+  - g++ -v
+  - cmake --version
   - mkdir build
-  - cd build
-  - ${DEPS_DIR}/cmake/bin/cmake .. && make
+  - cd build/
+  - cmake ..
+  - make
