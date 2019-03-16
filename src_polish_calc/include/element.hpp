@@ -143,4 +143,12 @@ bool  pc::eval_op(char op, std::stack<element>& opst){
 }
 
 
+std::ostream& operator<<(std::ostream& os, const pc::element& el){
+    if(el.is_op()) os << el.get_op();
+    else os << el._num;
+    
+    return os;
+}
+
+
 #endif
