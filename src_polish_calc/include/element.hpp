@@ -100,37 +100,37 @@ bool  pc::eval_op(char op, std::stack<element>& opst){
         // op is a valid operation
         
         double res = 0;
-        auto operands = _get_operands_from_stack(opst, num_operands(op));
+        auto ops = _get_operands_from_stack(opst, num_operands(op));
 
         switch(oper->first){
             case '+':
             // addition
-            
+                res = ops[0] + ops[1];
                 break;
 
             case '-':
             // subtraction
-
+                res = ops[0] - ops[1];
                 break;
 
             case '*':
             // multiplication
-
+                res = ops[0] * ops[1];
                 break;
 
             case '/':
             // division
-
+                res = ops[0] / ops[1];
                 break;
 
             case '^':
             // power
-
+                res = std::pow(ops[0], ops[1]);
                 break;
 
             case 'r':
             // sqrt
-
+                res = std::sqrt(ops[1]);
                 break;
         }
 
