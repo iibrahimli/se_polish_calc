@@ -45,12 +45,12 @@ union pc::element{
     }
 
     // check if union contains an operation
-    bool is_op(){
+    bool is_op() const{
         return std::isnan(_num);
     }
 
     // returns the char of operation
-    char get_op(){
+    char get_op() const{
         if(!is_op()) std::runtime_error("Tried to get operation while the element holds a nummber");
         return ((char*)_op)[sizeof _op - 1];
     }
