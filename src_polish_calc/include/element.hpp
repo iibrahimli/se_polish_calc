@@ -12,8 +12,8 @@
 namespace pc{
     union element;
     size_t num_operands(char op);
-    bool eval_op(char op, std::stack<element>& opst);
-    std::vector<double> _get_operands_from_stack(std::stack<element>& st, size_t n_ops);
+    bool eval_op(char op, std::stack<element, std::vector<element>>& opst);
+    std::vector<double> _get_operands_from_stack(std::stack<element, std::vector<element>>& st, size_t n_ops);
 
      // a map from operations to number of operands
     std::unordered_map<char, size_t> _n_operands({
@@ -36,7 +36,8 @@ union pc::element{
 
     // initialize with an operation
     element(char op){
-        _op = ~0 && op;
+        _num = std::numeric_limits<double>::quiet_NaN();
+        ((char*)(&_op))[0] = op;
     }
 
     // initialize with a number
@@ -52,7 +53,7 @@ union pc::element{
     // returns the char of operation
     char get_op() const{
         if(!is_op()) std::runtime_error("Tried to get operation while the element holds a nummber");
-        return ((char*)_op)[sizeof _op - 1];
+        return ((char*)(&_op))[0];
     }
 
 };
@@ -71,7 +72,7 @@ size_t pc::num_operands(char op){
 
 
 // gets N_OPS elements from the top of ST (from oldest to newest)
-std::vector<double> pc::_get_operands_from_stack(std::stack<element>& st, size_t n_ops){
+std::vector<double> pc::_get_operands_from_stack(std::stack<element, std::vector<element>>& st, size_t n_ops){
     std::vector<double> ops;
 
     // check whether there are enough numbers in the stack
@@ -94,7 +95,7 @@ std::vector<double> pc::_get_operands_from_stack(std::stack<element>& st, size_t
 
 // evaluates the operation modifying the stack as necessary (popping operands
 // and pushing the result) and returns boolean indicating success
-bool  pc::eval_op(char op, std::stack<element>& opst){
+bool  pc::eval_op(char op, std::stack<element, std::vector<element>>& opst){
     auto oper = _n_operands.find(op);
     if( oper != _n_operands.end()){
         // op is a valid operation
@@ -130,9 +131,11 @@ bool  pc::eval_op(char op, std::stack<element>& opst){
 
             case 'r':
             // sqrt
-                res = std::sqrt(ops[1]);
+                res = std::sqrt(ops[0]);
                 break;
         }
+
+        opst.push(element(res));
 
         return true;
     }

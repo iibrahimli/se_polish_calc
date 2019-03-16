@@ -15,6 +15,8 @@ namespace pc{
 
 class pc::polish_calc{
 
+public:
+
     // adds an element to the stack and executes if element contains an operation
     void add_element(element el){
         if(el.is_op()){
@@ -52,42 +54,37 @@ class pc::polish_calc{
         std::istringstream in(expr);
         double tmp_num;
         char tmp_op;
-        bool is_op = false;
 
         while(in){
             // ignore spaces
-            if(in.peek() == ' '){
+            if(std::isspace(in.peek()) || in.peek() == '\0'){
                 in.ignore(1);
                 continue;
             }
             else{
                 // a digit means that we need to read a number
                 if(std::isdigit(in.peek())){
-                    in >> tmp_num;
-                    is_op = false;
+                    if(!(in >> tmp_num)) break;
+                    add_element(element(tmp_num));
                 }
                 // read in a character
                 else{
-                    in >> tmp_op;
-                    is_op = true;
+                    if(!(in >> tmp_op)) break;
+                    add_element(element(tmp_op));
                 }
-
-                // create and add element to stack
-                if(is_op) add_element(element(tmp_op));
-                else add_element(element(tmp_num));
             }
         }
 
         // expression done, but there are extra numbers left on the stack
         if(_opstack.size() > 1)
-            std::cout << "Stack has more than one number left. Check the expression maybe" << std::endl;
+            std::cout << "\nStack has more than one number left. Check the expression maybe" << std::endl;
 
         return _opstack.top()._num;
     }
 
 
 private:
-    std::stack<element> _opstack;      // operation stack
+    std::stack<element, std::vector<element>> _opstack;      // operation stack
 
 };
 
