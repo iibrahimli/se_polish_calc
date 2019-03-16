@@ -80,7 +80,7 @@ std::vector<double> pc::_get_operands_from_stack(std::stack<element>& st, size_t
         return ops;
     }
 
-    for(int i=0; i<n_ops; ++i){
+    for(size_t i=0; i<n_ops; ++i){
         ops.push_back(st.top()._num);
         st.pop();
     }
