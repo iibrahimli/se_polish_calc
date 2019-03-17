@@ -15,7 +15,7 @@ int main(int argc, const char *argv[]){
     polish_calc calc;
     string expr = argv[1];
 
-    cout << expr << "  ->  " << calc.eval_string(expr) << endl;
+    cout << calc.eval_string(expr) << endl;
 
     return 0;
 }
