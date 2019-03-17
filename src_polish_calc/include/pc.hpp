@@ -83,6 +83,12 @@ public:
     }
 
 
+    // clears the contents of the stack
+    void clear_stack(){
+        while(!_opstack.empty()) _opstack.pop();
+    }
+
+
 private:
     std::stack<element, std::vector<element>> _opstack;      // operation stack
 
