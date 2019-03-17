@@ -11,9 +11,10 @@
 
 namespace pc{
     union element;
-    size_t num_operands(char op);
-    bool eval_op(char op, std::stack<element, std::vector<element>>& opst);
-    std::vector<double> _get_operands_from_stack(std::stack<element, std::vector<element>>& st, size_t n_ops);
+
+    size_t              num_operands(char op);
+    bool                eval_op(char op, std::stack<element>& opst);
+    std::vector<double> _get_operands_from_stack(std::stack<element>& st, size_t n_ops);
 
      // a map from operations to number of operands
     std::unordered_map<char, size_t> _n_operands({
@@ -72,7 +73,7 @@ size_t pc::num_operands(char op){
 
 
 // gets N_OPS elements from the top of ST (from oldest to newest)
-std::vector<double> pc::_get_operands_from_stack(std::stack<element, std::vector<element>>& st, size_t n_ops){
+std::vector<double> pc::_get_operands_from_stack(std::stack<element>& st, size_t n_ops){
     std::vector<double> ops;
 
     // check whether there are enough numbers in the stack
@@ -95,7 +96,7 @@ std::vector<double> pc::_get_operands_from_stack(std::stack<element, std::vector
 
 // evaluates the operation modifying the stack as necessary (popping operands
 // and pushing the result) and returns boolean indicating success
-bool  pc::eval_op(char op, std::stack<element, std::vector<element>>& opst){
+bool  pc::eval_op(char op, std::stack<element>& opst){
     auto oper = _n_operands.find(op);
     if( oper != _n_operands.end()){
         // op is a valid operation

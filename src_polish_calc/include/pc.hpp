@@ -90,7 +90,7 @@ public:
 
 
 private:
-    std::stack<element, std::vector<element>> _opstack;      // operation stack
+    std::stack<element> _opstack;      // operation stack
 
 };
 
