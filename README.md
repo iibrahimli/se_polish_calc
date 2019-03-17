@@ -4,6 +4,6 @@
 
 This is a small project for my Software Engineering course to get used to
 * CMake
-* CUnit
+* CppUnit
 * Git
 * Travis CI
