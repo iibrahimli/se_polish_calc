@@ -4,6 +4,7 @@ project(polish_calc LANGUAGES CXX)
 include_directories("src_polish_calc/include/")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wextra -g")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11 -O3")
 
 SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY
         ${PROJECT_BINARY_DIR}/bin

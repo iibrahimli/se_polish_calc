@@ -1,2 +1,3 @@
-build_polish_calc/
+build/
+release/
 .vscode/
