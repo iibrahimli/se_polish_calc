@@ -1,4 +1,6 @@
 project(polish_calc_test)
 
-set(tests_source main.cpp)
-add_executable(tests ${tests_source})
+add_executable(tests main.cpp)
+target_link_libraries(tests cppunit)
+
+add_test(NAME "all" COMMAND "tests")

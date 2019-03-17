@@ -1,12 +1,12 @@
-#include <iostream>
-#include "pc.hpp"
+#include <cppunit/ui/text/TestRunner.h>
+#include "api_test.hpp"
+#include "expr_test.hpp"
 
-using namespace pc;
+using namespace std;
 
-
-int main(int argc, char const *argv[]){
-
-    polish_calc calc;
-
-    return 0;
+int main(){
+    CppUnit::TextUi::TestRunner runner;
+    runner.addTest(api_test::suite());
+    runner.addTest(expr_test::suite());
+    runner.run();
 }
