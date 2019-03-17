@@ -50,7 +50,7 @@ public:
 
 
     // evaluates a given expression string (MUST be space-separated) (ex: '2 4 + 5 *' will produce 30)
-    double eval_string(std::string expr){
+    double eval_string(const std::string& expr){
         std::istringstream in(expr);
         double tmp_num;
         char tmp_op;
