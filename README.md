@@ -2,7 +2,7 @@
 
 ## SE Project: Reverse Polish Notation Calculator
 
-This is a small project for my Software Engineering course to get used to
+This is a small PW project for my Software Engineering course to get used to
 * CMake
 * CppUnit
 * Git
