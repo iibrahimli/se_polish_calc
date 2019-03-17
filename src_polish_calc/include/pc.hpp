@@ -83,6 +83,12 @@ public:
     }
 
 
+    // returns number of elements on the stack
+    size_t num_elements(){
+        return _opstack.size();
+    }
+
+
     // clears the contents of the stack
     void clear_stack(){
         while(!_opstack.empty()) _opstack.pop();
