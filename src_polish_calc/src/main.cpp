@@ -8,7 +8,7 @@ using namespace pc;
 int main(int argc, const char *argv[]){
 
     if(argc != 2){
-        cout << "No single expression provided" << endl;
+        cout << "No single expression provided" << endl; 
         return 1;
     }
 
