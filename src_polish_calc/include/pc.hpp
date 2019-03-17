@@ -77,7 +77,15 @@ public:
 
         // expression done, but there are extra numbers left on the stack
         if(_opstack.size() > 1)
-            std::cout << "\nStack has more than one number left. Check the expression maybe" << std::endl;
+            std::cout << "\nStack has " << _opstack.size() << " numbers left. Check the expression maybe" << std::endl;
+
+        return _opstack.top()._num;
+    }
+
+
+    // result of operation (in "manual mode", i.e used with add_*())
+    double get_result(){
+        if(_opstack.size() != 1) return std::numeric_limits<double>::quiet_NaN();
 
         return _opstack.top()._num;
     }
