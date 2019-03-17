@@ -5,21 +5,17 @@
 using namespace std;
 using namespace pc;
 
-int main(){
+int main(int argc, const char *argv[]){
 
-    // === element test ===
-    // element op('+');
-    // element num(125.1024);
+    if(argc != 2){
+        cout << "No expression provided" << endl;
+        return 1;
+    }
 
-    // cout << "op: " << op.is_op() << " " << op << endl;
-    // cout << "num: " << num.is_op() << " " << num << endl;
-
-
-    string expr = "5.0 4.0 +  9  *1 - 80.000 / 3 + r 10 ^ 2 *";
     polish_calc calc;
+    string expr = argv[1];
 
-    // should print 2048
-    cout << expr << " => " << calc.eval_string(expr) << endl;
+    cout << expr << "  ->  " << calc.eval_string(expr) << endl;
 
     return 0;
 }
