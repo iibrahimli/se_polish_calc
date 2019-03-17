@@ -18,12 +18,12 @@ public:
     void test_expr(){
         std::string expr = "5 4 + 6 - 2 ^ 2 ^ r 4 *";  // -> 36
         CPPUNIT_ASSERT_DOUBLES_EQUAL(calc.eval_string(expr), 36.0, 0.0001);
+        calc.clear_stack();
 
         // big string test
         expr = "";
         for(int i=0; i<N_NUMS; ++i) expr += (std::string(" ") + std::to_string(1.0));
         for(int i=0; i<N_NUMS-1; ++i) expr += (std::string(" ") + "+");
-        std::cout << expr << std::endl;
         CPPUNIT_ASSERT_DOUBLES_EQUAL(N_NUMS, calc.eval_string(expr), 0.0001);
     }
 
